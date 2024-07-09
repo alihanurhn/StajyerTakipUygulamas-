@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.OleDb;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -8,8 +9,6 @@ namespace StajyerTakipUygulaması
     public partial class Form1 : Form
     {
         private CheckBox showPasswordCheckBox;
-        private Timer timer1;
-        private int countdownSeconds = 30; // Geri sayım için saniye sayısı
         private bool timerRunning = false; // Timer'ın çalışıp çalışmadığını kontrol etmek için
 
         public Form1()
@@ -30,6 +29,8 @@ namespace StajyerTakipUygulaması
             showPasswordCheckBox.Location = new Point(textBox2.Right + 10, textBox2.Top);
             showPasswordCheckBox.CheckedChanged += new EventHandler(showPasswordCheckBox_CheckedChanged);
             this.Controls.Add(showPasswordCheckBox);
+
+            this.Load += new EventHandler(Form1_Load);
         }
 
         // Veritabanı dosya yolu ve provider nesnesinin belirlenmesi
@@ -48,8 +49,35 @@ namespace StajyerTakipUygulaması
             this.AcceptButton = button2;
             label6.Text = "3";
             radioButton1.Checked = true;
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = "dddd, dd MMMM yyyy"; // Detaylı tarih formatı
+            dateTimePicker1.Enabled = false; // Tarih seçimini devre dışı bırakır
+                                             // DateTimePicker'i gizle
+            dateTimePicker1.Visible = false;
+
+            // Yeni bir Label kontrolü oluştur ve aynı pozisyona yerleştir
+            Label dateLabel = new Label();
+            dateLabel.Location = dateTimePicker1.Location;
+            dateLabel.Size = dateTimePicker1.Size;
+            dateLabel.Text = dateTimePicker1.Value.ToString("dd MMMM yyyy"); // Tarihi uygun formatta göster
+
+            // Label kontrolünü forma ekle
+            this.Controls.Add(dateLabel);
+
+
         }
 
+        private void labelLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo("https://www.eyupsultan.bel.tr") { UseShellExecute = true });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Bağlantı açılırken bir hata oluştu: " + ex.Message);
+            }
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             if (hak > 0)
@@ -78,10 +106,7 @@ namespace StajyerTakipUygulaması
                                 // Form2'yi oluştur ve göster
                                 Form2 frm2 = new Form2();
                                 frm2.Show();
-
-                                // Form1'i gizle
                                 this.Hide();
-
                                 break; // Döngüden çık
                             }
                         }
@@ -115,22 +140,27 @@ namespace StajyerTakipUygulaması
                     label6.Text = hak.ToString();
                     if (hak == 0)
                     {
-                        // Giriş hakkı kalmadığında timer'ı başlat
-                        StartCountdownTimer();
+                        baglanti.Close();
                     }
                 }
             }
         }
-        private void StartCountdownTimer()
-        {
-            timerRunning = true;
-            timer1.Start();
-            MessageBox.Show($"Giriş hakkınız kalmadı. Lütfen {countdownSeconds} saniye bekleyiniz.", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
+
+       
 
         private void Form1_Load_1(object sender, EventArgs e)
         {
-            // Bu metod boş olabilir veya kaldırılabilir
+            // DateTimePicker'i devre dışı bırak
+            dateTimePicker1.Enabled = false;
+            // İsteğe bağlı: DateTimePicker'in görünümünü gri yap
+            dateTimePicker1.CalendarForeColor = SystemColors.GrayText;
+            dateTimePicker1.CalendarMonthBackground = SystemColors.Control;
+        }
+
+        private void dateTimePicker1_MouseDown(object sender, MouseEventArgs e)
+        {
+            // Kullanıcı tıklamasını iptal et
+            ((HandledMouseEventArgs)e).Handled = true;
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -164,5 +194,7 @@ namespace StajyerTakipUygulaması
                 textBox2.PasswordChar = '*'; // Gizle
             }
         }
+
+       
     }
 }

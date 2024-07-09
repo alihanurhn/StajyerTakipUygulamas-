@@ -42,6 +42,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.labelLink = new System.Windows.Forms.LinkLabel();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,9 +137,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::StajyerTakipUygulaması.Properties.Resources._20191007101432_Eyüp_Belediyesi_Yeni_Logo;
-            this.pictureBox1.Location = new System.Drawing.Point(259, 77);
+            this.pictureBox1.Location = new System.Drawing.Point(223, 29);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(115, 105);
+            this.pictureBox1.Size = new System.Drawing.Size(192, 151);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
@@ -146,7 +148,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(107, 194);
+            this.label4.Location = new System.Drawing.Point(112, 197);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(416, 26);
             this.label4.TabIndex = 7;
@@ -156,7 +158,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(230, 220);
+            this.label5.Location = new System.Drawing.Point(235, 223);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(170, 17);
             this.label5.TabIndex = 8;
@@ -166,7 +168,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.4F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label7.Location = new System.Drawing.Point(479, 83);
+            this.label7.Location = new System.Drawing.Point(78, 428);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(78, 16);
             this.label7.TabIndex = 10;
@@ -177,17 +179,40 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(563, 83);
+            this.label6.Location = new System.Drawing.Point(153, 428);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(15, 16);
             this.label6.TabIndex = 11;
             this.label6.Text = "3";
+            // 
+            // labelLink
+            // 
+            this.labelLink.AutoSize = true;
+            this.labelLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLink.Location = new System.Drawing.Point(180, 508);
+            this.labelLink.Name = "labelLink";
+            this.labelLink.Size = new System.Drawing.Size(296, 17);
+            this.labelLink.TabIndex = 13;
+            this.labelLink.TabStop = true;
+            this.labelLink.Text = "Eyüpsultan Belediyesi - Bilgi İşlem Müdürlüğü ";
+            this.labelLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.labelLink_LinkClicked);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "dd MMMM yyyy";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(25, 29);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(172, 22);
+            this.dateTimePicker1.TabIndex = 15;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(653, 554);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.labelLink);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
@@ -227,6 +252,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.LinkLabel labelLink;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
 

@@ -64,17 +64,10 @@
     <Compile Include="Form3.Designer.cs">
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
-    <Compile Include="GeriSayım.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GeriSayım.Designer.cs">
-      <DependentUpon>GeriSayım.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GeriSayımForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GeriSayımForm.Designer.cs">
-      <DependentUpon>GeriSayımForm.cs</DependentUpon>
+    <Compile Include="personelDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>personelDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,9 +76,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GeriSayımForm.resx">
-      <DependentUpon>GeriSayımForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -97,6 +87,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="personelDataSet.xsc">
+      <DependentUpon>personelDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="personelDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>personelDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="personelDataSet.xss">
+      <DependentUpon>personelDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -115,6 +116,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\images.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="personel.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
